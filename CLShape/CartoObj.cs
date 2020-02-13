@@ -49,10 +49,8 @@ namespace CLShape
             Console.WriteLine(this.ToString());
         }
 
-        public virtual bool IsPointClose(Coordonnees coordonnees, double precision)
-        {
-            return false;
-        }
+        public abstract bool IsPointClose(Coordonnees point, double precision);
+
 
         #endregion
     }

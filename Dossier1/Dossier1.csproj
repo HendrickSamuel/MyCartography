@@ -55,6 +55,10 @@
       <Project>{356f8042-7a6e-485d-ab96-c057faf4233e}</Project>
       <Name>CLShape</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MathUtil\CLMathUtil.csproj">
+      <Project>{99da119c-02c8-45c5-b5f0-99fd56d28eea}</Project>
+      <Name>CLMathUtil</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

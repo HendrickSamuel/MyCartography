@@ -7,7 +7,7 @@ using System.Windows.Media;
 
 namespace CLShape
 {
-    public class Polygon: CartoObj
+    public class Polygon: CartoObj, IPointy
     {
         #region VARIABLES
         private List<Coordonnees> _coordonnees;
@@ -45,6 +45,11 @@ namespace CLShape
                 else _opacite = value;
             }
         }
+
+        public int NbPoints
+        {
+            get { return _coordonnees.Count() + 1;/* changer pour compter les ids differents */ }
+        }
         #endregion
 
         #region CONSTRUCTEURS
@@ -67,12 +72,17 @@ namespace CLShape
             foreach (Coordonnees s in Coordonnees)
                 stringReturn = stringReturn + " " + s.ToString();
 
-            return base.ToString() + " Opacite: " + Opacite +"\n\tFond: "+Remplissage.ToString() + " Contour: "+Contour.ToString() +"\n\tCoordonees: " + stringReturn;
+            return base.ToString() + " Opacite: " + Opacite +"\n\tFond: "+Remplissage.ToString() + " Contour: "+Contour.ToString() +"\n\tPoints: "+NbPoints+"\n\tCoordonees: " + stringReturn;
         }
 
         public override void Draw()
         {
             Console.WriteLine(this.ToString());
+        }
+
+        public override bool IsPointClose(Coordonnees point, double precision)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

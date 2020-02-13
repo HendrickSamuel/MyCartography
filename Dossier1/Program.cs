@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CLShape;
 using System.Windows.Media;
+using CLMathUtil;
 
 namespace Dossier1
 {
@@ -12,18 +13,28 @@ namespace Dossier1
     {
         static void Main(string[] args)
         {
-            /*POI coord1 = new POI();
-            POI coord2 = new POI("test",20,20);
-            Console.WriteLine(coord1);
-            Console.WriteLine(coord2);*/
-            List<Coordonnees> coords = new List<Coordonnees>();
+            POI poi = new POI();
+
+            /*List<Coordonnees> coords = new List<Coordonnees>();
             coords.Add(new Coordonnees(0, 0));
             coords.Add(new Coordonnees(0, 1));
             coords.Add(new Coordonnees(0, 2));
 
             Polygon poly = new Polygon(coords,3);
-            Console.WriteLine(poly);
-            poly.IsPointClose(poly.Coordonnees[0], 2);
+            //poly.Draw();
+            //poly.IsPointClose(poly.Coordonnees[0], 2);
+            Console.WriteLine(MathUtilClass.DistanceBetween(-3, -2, -1, -3));*/
+
+            Coordonnees coords = new Coordonnees(-3, -2);
+            Coordonnees coords1 = new Coordonnees(-1,-3);
+
+            if (poi.IsPointClose(coords1, -1))
+            {
+                Console.WriteLine("proche");
+            }
+            else
+                Console.WriteLine("pas proche");
+
 
             Console.ReadKey();
         }

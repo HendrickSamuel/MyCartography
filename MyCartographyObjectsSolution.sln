@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dossier1", "Dossier1\Dossie
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLShape", "CLShape\CLShape.csproj", "{356F8042-7A6E-485D-AB96-C057FAF4233E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLMathUtil", "MathUtil\CLMathUtil.csproj", "{99DA119C-02C8-45C5-B5F0-99FD56D28EEA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{356F8042-7A6E-485D-AB96-C057FAF4233E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{356F8042-7A6E-485D-AB96-C057FAF4233E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{356F8042-7A6E-485D-AB96-C057FAF4233E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99DA119C-02C8-45C5-B5F0-99FD56D28EEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99DA119C-02C8-45C5-B5F0-99FD56D28EEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99DA119C-02C8-45C5-B5F0-99FD56D28EEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99DA119C-02C8-45C5-B5F0-99FD56D28EEA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

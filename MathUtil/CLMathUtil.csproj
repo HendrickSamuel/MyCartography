@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{356F8042-7A6E-485D-AB96-C057FAF4233E}</ProjectGuid>
+    <ProjectGuid>{99DA119C-02C8-45C5-B5F0-99FD56D28EEA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CLShape</RootNamespace>
-    <AssemblyName>CLShape</AssemblyName>
+    <RootNamespace>MathUtil</RootNamespace>
+    <AssemblyName>MathUtil</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,7 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,20 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CartoObj.cs" />
-    <Compile Include="IIsPointClose.cs" />
-    <Compile Include="IPointy.cs" />
-    <Compile Include="Polygon.cs" />
-    <Compile Include="Coordonees.cs" />
-    <Compile Include="POI.cs" />
-    <Compile Include="Polyline.cs" />
+    <Compile Include="MathUtilClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MathUtil\CLMathUtil.csproj">
-      <Project>{99da119c-02c8-45c5-b5f0-99fd56d28eea}</Project>
-      <Name>CLMathUtil</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

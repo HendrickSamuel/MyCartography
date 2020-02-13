@@ -7,7 +7,7 @@ using System.Windows.Media;
 
 namespace CLShape
 {
-    public class Polyline : CartoObj
+    public class Polyline : CartoObj, IPointy
     {
         #region VARIABLES
         private List<Coordonnees> _coordonnees;
@@ -17,6 +17,7 @@ namespace CLShape
         #endregion
 
         #region PROPRIETES
+        
 
         public Color Couleur
         {
@@ -34,6 +35,11 @@ namespace CLShape
         {
             get { return _epaisseur; }
             set { _epaisseur = value; }
+        }
+
+        public int NbPoints
+        {
+            get { return _coordonnees.Count() + 1; /* changer pour compter les ids differents */}
         }
 
         #endregion
@@ -64,6 +70,11 @@ namespace CLShape
         public override void Draw()
         {
             Console.WriteLine(this.ToString());
+        }
+
+        public override bool IsPointClose(Coordonnees point, double precision)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

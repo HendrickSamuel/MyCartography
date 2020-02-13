@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace CLShape
 {
-    public interface IIsPointClose
+    interface IPointy
     {
-        bool IsPointClose(Coordonnees point, double precision);
+        #region PROPRIETE
+        int NbPoints
+        {
+            get;
+        }
+        #endregion
     }
 }
