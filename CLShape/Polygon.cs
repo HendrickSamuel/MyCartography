@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using CLMathUtil;
 
 namespace CLShape
 {
@@ -14,9 +15,15 @@ namespace CLShape
         private Color _contour;
         private Color _remplissage;
         private double _opacite;
+        private BoundingBox _boundingBox;
+
         #endregion
 
         #region PROPRIETES
+        public BoundingBox Bbox
+        {
+            get { return _boundingBox; }
+        }
         public Color Contour
         {
             get { return _contour; }
@@ -48,14 +55,17 @@ namespace CLShape
 
         public int NbPoints
         {
-            get { return _coordonnees.Count() + 1;/* changer pour compter les ids differents */ }
+            get { return _coordonnees.Count();/* changer pour compter les ids differents */ }
         }
         #endregion
 
         #region CONSTRUCTEURS
         public Polygon(List<Coordonnees> coordonnees, double opacite, Color contour, Color remplissage):base()
         {
-            Coordonnees = coordonnees;
+            if (coordonnees == null)
+                Coordonnees = new List<Coordonnees>();
+            else
+                Coordonnees = coordonnees;
             Opacite = opacite;
             Remplissage = remplissage;
             Contour = contour;
@@ -82,7 +92,33 @@ namespace CLShape
 
         public override bool IsPointClose(Coordonnees point, double precision)
         {
-            throw new NotImplementedException();
+            if (NbPoints == 0)
+                throw new ArgumentException("La liste de polyline est vide");
+
+            Bbox.InitBbox(Coordonnees);
+
+            if (point.Longitude < Bbox.Min.Longitude || point.Longitude > Bbox.Max.Longitude)
+                return false;
+            if (point.Latitude < Bbox.Min.Latitude || point.Latitude > Bbox.Max.Latitude)
+                return false;
+
+            for (int i = 0; i < Coordonnees.Count; i++)
+            {
+                double distance;
+                if(i < Coordonnees.Count)
+                {
+                    distance = MathUtil.DistanceBetweenLine(Coordonnees[i].Longitude, Coordonnees[i].Latitude, Coordonnees[i + 1].Longitude, Coordonnees[i + 1].Latitude, point.Longitude, point.Latitude);
+                    if (distance < precision)
+                        return true;
+                }
+                else // derniere ligne pour fermer le polygone
+                {
+                    distance = MathUtil.DistanceBetweenLine(Coordonnees[i].Longitude, Coordonnees[i].Latitude, Coordonnees[0].Longitude, Coordonnees[0].Latitude, point.Longitude, point.Latitude);
+                    if (distance < precision)
+                        return true;
+                }
+            }
+            return false;
         }
 
         #endregion

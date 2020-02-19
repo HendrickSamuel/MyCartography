@@ -4,20 +4,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using CLMathUtil;
 
 namespace CLShape
 {
-    public class Polyline : CartoObj, IPointy
+    public class Polyline : CartoObj, IPointy, IComparable<Polyline>, IEquatable<Polyline>
     {
         #region VARIABLES
         private List<Coordonnees> _coordonnees;
         private int _epaisseur;
         private Color _couleur;
+        private BoundingBox _boundingBox;
 
         #endregion
 
         #region PROPRIETES
-        
+        public BoundingBox Bbox
+        {
+            get { return _boundingBox;  }
+            set { _boundingBox = value;  }
+        }
 
         public Color Couleur
         {
@@ -39,7 +45,7 @@ namespace CLShape
 
         public int NbPoints
         {
-            get { return _coordonnees.Count() + 1; /* changer pour compter les ids differents */}
+            get { return _coordonnees.Count(); /* changer pour compter les ids differents */}
         }
 
         #endregion
@@ -50,6 +56,7 @@ namespace CLShape
                 Coordonnees = coordonnees;
                 Epaisseur = epaisseur;
                 Couleur = couleur;
+                Bbox = new BoundingBox();
             }
 
         public Polyline(List<Coordonnees> coordonnees, int epaisseur) : this(coordonnees, epaisseur, Colors.Aqua) { }
@@ -74,7 +81,35 @@ namespace CLShape
 
         public override bool IsPointClose(Coordonnees point, double precision)
         {
-            throw new NotImplementedException();
+            if (NbPoints == 0)
+                return false;
+            Bbox.InitBbox(Coordonnees);
+
+            if (point.Longitude < Bbox.Min.Longitude || point.Longitude > Bbox.Max.Longitude)
+                return false;
+            if (point.Latitude < Bbox.Min.Latitude || point.Latitude > Bbox.Max.Latitude)
+                return false;
+
+            // calculer distance entre point et les 2 extremites + mediane et considerer le plus petit
+            for (int i = 0; i < Coordonnees.Count -1; i++)
+            {
+                double distance;
+                distance = MathUtil.DistanceBetweenLine(Coordonnees[i].Longitude, Coordonnees[i].Latitude, Coordonnees[i + 1].Longitude, Coordonnees[i + 1].Latitude, point.Longitude, point.Latitude);
+                if (distance < precision)
+                    return true;
+            }
+
+            return false;
+        }
+
+        public int CompareTo(Polyline other)
+        {
+            return NbPoints.CompareTo(other.NbPoints);
+        }
+
+        public bool Equals(Polyline other)
+        {
+            return this.NbPoints == other.NbPoints;
         }
 
         #endregion

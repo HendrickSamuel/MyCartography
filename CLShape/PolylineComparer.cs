@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace CLShape
 {
-    public interface IPointy
+    public class PolylineComparer : IComparer<Polyline>
     {
-        #region PROPRIETE
-        int NbPoints
+        public int Compare(Polyline x, Polyline y)
         {
-            get;
+            return x.CompareTo(y);
         }
-        #endregion
     }
 }

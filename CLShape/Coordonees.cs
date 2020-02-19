@@ -50,7 +50,7 @@ namespace CLShape
                 throw new ArgumentException(String.Format("la precision: {0} est plus petit que zero", precision),"precision");
 
             double distance = MathUtil.DistanceBetween(Longitude, Latitude, point.Longitude, point.Latitude);
-            if (distance <= precision)
+            if (distance < precision)
                 return true;
             else
                 return false;
@@ -64,4 +64,5 @@ namespace CLShape
         #endregion
 
     }
+    
 }

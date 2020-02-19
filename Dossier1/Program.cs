@@ -13,30 +13,88 @@ namespace Dossier1
     {
         static void Main(string[] args)
         {
-            POI poi = new POI();
+            List<CartoObj> liste = new List<CartoObj>();
 
-            /*List<Coordonnees> coords = new List<Coordonnees>();
-            coords.Add(new Coordonnees(0, 0));
-            coords.Add(new Coordonnees(0, 1));
-            coords.Add(new Coordonnees(0, 2));
+            Coordonnees c1 = new Coordonnees();
+            liste.Add(c1);
+            Coordonnees c2 = new Coordonnees(10, 20);
+            liste.Add(c2);
 
-            Polygon poly = new Polygon(coords,3);
-            //poly.Draw();
-            //poly.IsPointClose(poly.Coordonnees[0], 2);
-            Console.WriteLine(MathUtilClass.DistanceBetween(-3, -2, -1, -3));*/
+            POI p1 = new POI();
+            liste.Add(p1);
+            POI p2 = new POI("test", 20, 30);
+            liste.Add(p2);
 
-            Coordonnees coords = new Coordonnees(-3, -2);
-            Coordonnees coords1 = new Coordonnees(-1,-3);
+            List<Coordonnees> l = new List<Coordonnees>();
+            l.Add(new Coordonnees(0, 1));
+            l.Add(new POI("lol",0,3));
+            l.Add(new Coordonnees(3, 4));
 
-            if (poi.IsPointClose(coords1, -1))
+
+            Polyline pl1 = new Polyline();
+            liste.Add(pl1);
+            Polyline pl2 = new Polyline(l, 3, Colors.AliceBlue);
+            liste.Add(pl2);
+            
+            Polygon pol1 = new Polygon();
+            liste.Add(pol1);
+            Polygon pol2 = new Polygon(l, 2, Colors.ForestGreen, Colors.Aqua);
+            liste.Add(pol2);
+
+            foreach (CartoObj obj in liste)
             {
-                Console.WriteLine("proche");
-            }
-            else
-                Console.WriteLine("pas proche");
+                if (obj is IPointy)
+                    Console.WriteLine("Ipointy -- ");
+                else
+                    Console.WriteLine("Not Ipointy --");
 
+                Console.WriteLine(obj);
+                Console.WriteLine("\n");
+            }
+
+            List<Polyline> poListe = new List<Polyline>();
+
+            poListe.Add(pl1);
+            poListe.Add(pl2);
+
+            Polyline pl3 = new Polyline();
+            pl3.Coordonnees.Add(new Coordonnees(0, 5));
+            poListe.Add(pl3);
+
+            Polyline pl4 = new Polyline();
+            pl4.Coordonnees.Add(new POI("lol",0, 5));
+
+            poListe.Add(new Polyline());  
+            poListe.Add(new Polyline());
+
+            poListe.Sort();
+            foreach (Polyline p in poListe)
+                Console.WriteLine(p);
+            
+
+            PolylineComparer pc = new PolylineComparer();
+
+            poListe.Sort(pc);
+            Console.WriteLine("+++++++++++++");
+            foreach (Polyline p in poListe)
+                Console.WriteLine(p);
+
+            Console.WriteLine("+++++++++++++");
+
+            Console.WriteLine(
+            poListe.Find(x => x.NbPoints == 1)
+                );
+
+            Console.WriteLine(
+            poListe.FindAll(x => x.NbPoints == 1)
+                );
+
+            Console.WriteLine(
+              poListe.FindAll(x => x.IsPointClose(new Coordonnees(0, 0), 1))
+              );
 
             Console.ReadKey();
+
         }
     }
 }
