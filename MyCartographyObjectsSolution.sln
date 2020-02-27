@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLShape", "CLShape\CLShape.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLMathUtil", "MathUtil\CLMathUtil.csproj", "{99DA119C-02C8-45C5-B5F0-99FD56D28EEA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCartoWindow", "MyCartoWindow\MyCartoWindow.csproj", "{FD9A0A47-FAFC-46D0-A43B-A23B369E6559}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{99DA119C-02C8-45C5-B5F0-99FD56D28EEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99DA119C-02C8-45C5-B5F0-99FD56D28EEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99DA119C-02C8-45C5-B5F0-99FD56D28EEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD9A0A47-FAFC-46D0-A43B-A23B369E6559}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD9A0A47-FAFC-46D0-A43B-A23B369E6559}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD9A0A47-FAFC-46D0-A43B-A23B369E6559}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD9A0A47-FAFC-46D0-A43B-A23B369E6559}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -10,7 +10,7 @@ namespace CLShape
     {
         public int Compare(Polyline x, Polyline y)
         {
-            return x.CompareTo(y);
+            return x.Bbox.CompareTo(y.Bbox);
         }
     }
 }

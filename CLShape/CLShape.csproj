@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="CartoObj.cs" />
     <Compile Include="BoundingBox.cs" />
+    <Compile Include="CartComparer.cs" />
     <Compile Include="PolylineComparer.cs" />
     <Compile Include="IIsPointClose.cs" />
     <Compile Include="IPointy.cs" />

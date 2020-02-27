@@ -28,6 +28,7 @@ namespace CLShape
         }
 
         public POI() : this("HEPL",50.620796, 5.581418) { }
+        public POI(string description, Coordonnees c) : this(description, c.Longitude, c.Latitude) { }
         #endregion
 
         #region METHODES

@@ -59,6 +59,13 @@
       <Project>{99da119c-02c8-45c5-b5f0-99fd56d28eea}</Project>
       <Name>CLMathUtil</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MyCartoWindow\MyCartoWindow.csproj">
+      <Project>{fd9a0a47-fafc-46d0-a43b-a23b369e6559}</Project>
+      <Name>MyCartoWindow</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

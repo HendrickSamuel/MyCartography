@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CLShape;
 using System.Windows.Media;
 using CLMathUtil;
+using MyCartoWindow;
 
 namespace Dossier1
 {
@@ -27,7 +28,7 @@ namespace Dossier1
 
             List<Coordonnees> l = new List<Coordonnees>();
             l.Add(new Coordonnees(0, 1));
-            l.Add(new POI("lol",0,3));
+            l.Add(new POI("lol", 0, 3));
             l.Add(new Coordonnees(3, 4));
 
 
@@ -35,7 +36,7 @@ namespace Dossier1
             liste.Add(pl1);
             Polyline pl2 = new Polyline(l, 3, Colors.AliceBlue);
             liste.Add(pl2);
-            
+
             Polygon pol1 = new Polygon();
             liste.Add(pol1);
             Polygon pol2 = new Polygon(l, 2, Colors.ForestGreen, Colors.Aqua);
@@ -62,15 +63,15 @@ namespace Dossier1
             poListe.Add(pl3);
 
             Polyline pl4 = new Polyline();
-            pl4.Coordonnees.Add(new POI("lol",0, 5));
+            pl4.Coordonnees.Add(new POI("lol", 0, 5));
 
-            poListe.Add(new Polyline());  
+            poListe.Add(new Polyline());
             poListe.Add(new Polyline());
 
             poListe.Sort();
             foreach (Polyline p in poListe)
                 Console.WriteLine(p);
-            
+
 
             PolylineComparer pc = new PolylineComparer();
 
@@ -89,12 +90,24 @@ namespace Dossier1
             poListe.FindAll(x => x.NbPoints == 1)
                 );
 
-            Console.WriteLine(
+            DisplayCartoObjCollection(
               poListe.FindAll(x => x.IsPointClose(new Coordonnees(0, 0), 1))
               );
 
+            Console.WriteLine("--------------- ");
+
+            CartoComparer cc = new CartoComparer();
+            poListe.Sort(cc);
+            DisplayCartoObjCollection(poListe);
+
             Console.ReadKey();
 
+        }
+
+        private static void DisplayCartoObjCollection(List<Polyline> poListe)
+        {
+            foreach (Polyline p in poListe)
+                Console.WriteLine(p);
         }
     }
 }

@@ -63,8 +63,8 @@ namespace CLShape
 
                 if (c.Longitude < bBy1)
                     bBy1 = c.Longitude;
-
-                bBy2 = c.Longitude;
+                if(c.Longitude > bBy2)
+                    bBy2 = c.Longitude;
             }
 
             Min = new Coordonnees(bBx1, bBy1);

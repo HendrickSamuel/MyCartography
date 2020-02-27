@@ -74,6 +74,7 @@ namespace CLShape
             return base.ToString() +" Couleur: "+ Couleur.ToString() +" Epaisseur: " + Epaisseur + " Coordonees: " + stringReturn;
         }
 
+
         public override void Draw()
         {
             Console.WriteLine(this.ToString());
@@ -81,7 +82,7 @@ namespace CLShape
 
         public override bool IsPointClose(Coordonnees point, double precision)
         {
-            if (NbPoints == 0)
+            if (NbPoints < 2)
                 return false;
             Bbox.InitBbox(Coordonnees);
 
@@ -102,9 +103,22 @@ namespace CLShape
             return false;
         }
 
+        public double CheckDistance()
+        {
+            double distance = 0;
+            for (int i = 0; i < Coordonnees.Count - 1; i++)
+            {
+                
+                distance += MathUtil.DistanceBetween(Coordonnees[i].Longitude, Coordonnees[i].Latitude, Coordonnees[i + 1].Longitude, Coordonnees[i + 1].Latitude);
+                   
+            }
+            return distance;
+        }
+
         public int CompareTo(Polyline other)
         {
-            return NbPoints.CompareTo(other.NbPoints);
+            // calcul distance
+            return this.CheckDistance().CompareTo(other.CheckDistance());  
         }
 
         public bool Equals(Polyline other)
